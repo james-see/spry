@@ -1,3 +1,6 @@
+import pkutils
+requirements = list(pkutils.parse_requirements('requirements.txt'))
+dev_requirements = list(pkutils.parse_requirements('dev-requirements.txt'))
 from distutils.core import setup
 from sys import version
 if version < '2.2.3':
@@ -12,7 +15,8 @@ setup(
   author = 'James Campbell',
   author_email = 'james@jamescampbell.us',
   url = 'https://github.com/jamesacampbell/spry', # use the URL to the github repo
-  download_url = 'https://github.com/jamesacampbell/spry/tarball/0.12', # I'll explain this in a second
+  download_url = 'https://github.com/jamesacampbell/spry/tarball/0.12',
+
   keywords = ['testing', 'logging', 'example'], # arbitrary keywords
   classifiers=[
           'Development Status :: 4 - Beta',
