@@ -1,6 +1,3 @@
-import pkutils
-requirements = list(pkutils.parse_requirements('requirements.txt'))
-dev_requirements = list(pkutils.parse_requirements('dev-requirements.txt'))
 from distutils.core import setup
 from sys import version
 if version < '2.2.3':
@@ -10,12 +7,12 @@ if version < '2.2.3':
 setup(
   name = 'spry',
   packages = ['spry'], # this must be the same as the name above
-  version = '0.12',
+  version = '0.1.5',
   description = 'Spry is a social media collector toolsuite',
   author = 'James Campbell',
   author_email = 'james@jamescampbell.us',
   url = 'https://github.com/jamesacampbell/spry', # use the URL to the github repo
-  download_url = 'https://github.com/jamesacampbell/spry/tarball/0.12',
+  download_url = 'https://github.com/jamesacampbell/spry/tarball/0.1.5',
 
   keywords = ['testing', 'logging', 'example'], # arbitrary keywords
   classifiers=[

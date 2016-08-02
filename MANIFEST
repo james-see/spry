@@ -2,3 +2,4 @@
 setup.cfg
 setup.py
 spry/foo.py
+spry/spry.py
