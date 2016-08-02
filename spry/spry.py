@@ -17,19 +17,15 @@
 # along with Spry. If not, see <http://www.gnu.org/licenses/>.
 
 from modules import core
-import argparse
+import argparse, requests
 
 def main():
     parser = argparse.ArgumentParser(
-        version=__version__,
+        #version='0.1.7',
         formatter_class=argparse.RawTextHelpFormatter,
         prog='spry',
-        description=__description__,
-        epilog = '''\
-EXAMPLE:
-check instagram
-  spry jamesanthonycampbell
-The ALIAS name is marked in yellow''')
+        description='social media scanner',
+        epilog = '''EXAMPLE: \n check instagram \n spry jamesanthonycampbell \n The ALIAS name is marked in yellow''')
 
     parser.add_argument('username', help='specific target domain, like domain.com')
 
@@ -51,8 +47,9 @@ The ALIAS name is marked in yellow''')
     # args True or False
     resolve = args.resolve
     zone = args.zone
-    r=requests.get('https://www.instagram.com/jamesanthonycampbell')
-    print(r)
+    r=requests.get('https://www.instagram.com/'+username)
+    print(r.text)
+    print("Status code for instagram for that user is: {}".format(r.status_code))
     exit()
 if __name__ == '__main__':
     main()
