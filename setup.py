@@ -19,4 +19,14 @@ setup(
           'Development Status :: 4 - Beta',
           'Environment :: Console',
           'Programming Language :: Python',],
+      packages=["spry", "spry.modules"],
+    package_data={'spry': ['sociallist/sociallist.txt']},
+  install_requires = ['requests>=1.0'],
+
+    entry_points={
+        'console_scripts': [
+            'spry=spry.spry:main',
+        ],
+    },
+
 )
