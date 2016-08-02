@@ -1,4 +1,9 @@
-from distutils.core import setup
+from setuptools import setup
+from codecs import open  # To use a consistent encoding
+from os import path
+
+here = path.abspath(path.dirname(__file__))
+
 from sys import version
 if version < '2.2.3':
     from distutils.dist import DistributionMetadata
@@ -6,13 +11,13 @@ if version < '2.2.3':
     DistributionMetadata.download_url = None
 setup(
   name = 'spry',
-  packages = ['spry'], # this must be the same as the name above
-  version = '0.1.5',
+  license='GNUv3',
+  version = '0.1.7',
   description = 'Spry is a social media collector toolsuite',
   author = 'James Campbell',
   author_email = 'james@jamescampbell.us',
   url = 'https://github.com/jamesacampbell/spry', # use the URL to the github repo
-  download_url = 'https://github.com/jamesacampbell/spry/tarball/0.1.5',
+  download_url = 'https://github.com/jamesacampbell/spry/tarball/0.1.7',
 
   keywords = ['testing', 'logging', 'example'], # arbitrary keywords
   classifiers=[
