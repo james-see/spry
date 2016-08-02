@@ -8,6 +8,7 @@ spry.egg-info/dependency_links.txt
 spry.egg-info/entry_points.txt
 spry.egg-info/requires.txt
 spry.egg-info/top_level.txt
+spry/modules/__init__.py
 spry/modules/core.py
 spry/modules/write_pdf.py
 spry/sociallist/sociallist.txt
