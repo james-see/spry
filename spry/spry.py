@@ -19,8 +19,9 @@ __version__ = "0.3.4"
 #
 # You should have received a copy of the GNU General Public License
 # along with Spry. If not, see <http://www.gnu.org/licenses/>.
-
+import sys
 import argparse, requests
+from .stuff import Stuff
 
 def main():
     parser = argparse.ArgumentParser(
@@ -54,3 +55,5 @@ def main():
     #print(r.text)
     print("Status code for instagram for that user is: {}".format(r.status_code))
 
+class Boo(Stuff):
+    pass
