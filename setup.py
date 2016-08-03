@@ -14,23 +14,25 @@ setup(
   include_package_data=True,
   name = 'spry',
   license='GNUv3',
-  version = '0.1.9',
+  version = '0.2.1',
   description = 'Spry is a social media collector toolsuite',
   long_description = readme(),
   author = 'James Campbell',
   author_email = 'james@jamescampbell.us',
   url = 'https://github.com/jamesacampbell/spry', # use the URL to the github repo
-  download_url = 'https://github.com/jamesacampbell/spry/tarball/0.1.9',
+  download_url = 'https://github.com/jamesacampbell/spry/tarball/0.2.1',
 
   keywords = ['social', 'collector', 'scraper'], # arbitrary keywords
   classifiers=[
           'Development Status :: 4 - Beta',
           'Environment :: Console',
-          'Programming Language :: Python',],
-      packages=["spry", "spry.modules",],
-    package_data={'spry': ['sociallist/sociallist.txt'],},
+          'Programming Language :: Python',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',],
+      packages=["sprypy", "sprypy.modules",],
   install_requires = ['requests>=1.0',],
     entry_points={
-        'console_scripts': [ 'spry=spry:main',],
+        'console_scripts': [ 'spry=sprypy.spry:main',],
         }
 )
