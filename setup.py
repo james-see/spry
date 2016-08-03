@@ -21,7 +21,7 @@ setup(
   author = 'James Campbell',
   author_email = 'james@jamescampbell.us',
   url = 'https://github.com/jamesacampbell/spry', # use the URL to the github repo
-  download_url = 'https://github.com/jamesacampbell/spry/tarball/0.1.8',
+  download_url = 'https://github.com/jamesacampbell/spry/tarball/0.1.9',
 
   keywords = ['social', 'collector', 'scraper'], # arbitrary keywords
   classifiers=[
@@ -32,6 +32,6 @@ setup(
     package_data={'spry': ['sociallist/sociallist.txt']},
   install_requires = ['requests>=1.0',],
     entry_points={
-        'console_scripts': [ 'spry=spry.spry:main',],
+        'console_scripts': [ 'spry=spry:main',],
         },
 )
