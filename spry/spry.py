@@ -4,7 +4,7 @@
 """bootstrap.bootstrap: provides entry point main()."""
 
 
-__version__ = "0.2.4"
+__version__ = "0.2.5"
 # spry social media scanner
 #
 # Spry is free software: you can redistribute it and/or modify
@@ -54,6 +54,3 @@ def main():
     print(r.text)
     print("Status code for instagram for that user is: {}".format(r.status_code))
 
-if __name__ == '__main__':
-    main()
-exit()

@@ -21,9 +21,9 @@ with open("README.rst", "rb") as f:
 
 setup(
     name = "spry",
-    packages = ["sprypy"],
+    packages = ["spry"],
     entry_points = {
-        "console_scripts": ['spry = sprypy.spry:main']
+        "console_scripts": ['spry = spry.spry:main']
         },
     version = version,
     description = "social media scanner",
@@ -31,7 +31,7 @@ setup(
     author = "James A. Campbell",
     author_email = "james@jamescampbell.us",
     url = "https://github.com/jamesacampbell/spry",
-    download_url = "https://github.com/jamesacampbell/spry/tarball/0.2.4",
+    download_url = "https://github.com/jamesacampbell/spry/tarball/0.2.5",
 keywords = ['social', 'collector', 'scraper'], # arbitrary keywords
   classifiers=[
           'Development Status :: 4 - Beta',
