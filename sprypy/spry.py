@@ -4,7 +4,7 @@
 """bootstrap.bootstrap: provides entry point main()."""
 
 
-__version__ = "0.2.3"
+__version__ = "0.2.4"
 # spry social media scanner
 #
 # Spry is free software: you can redistribute it and/or modify
@@ -19,7 +19,7 @@ __version__ = "0.2.3"
 #
 # You should have received a copy of the GNU General Public License
 # along with Spry. If not, see <http://www.gnu.org/licenses/>.
-from . import *
+
 import argparse, requests
 
 def main():
