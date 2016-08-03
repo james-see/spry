@@ -21,7 +21,10 @@ __version__ = "0.3.5"
 # along with Spry. If not, see <http://www.gnu.org/licenses/>.
 import sys
 import argparse, requests
-from .stuff import Stuff
+try:
+    from modules import stuff
+except:
+    from spry.modules import stuff
 
 def main():
     parser = argparse.ArgumentParser(
@@ -55,5 +58,8 @@ def main():
     #print(r.text)
     print("Status code for instagram for that user is: {}".format(r.status_code))
 
-class Boo(Stuff):
+class Boo(stuff.Stuff):
     pass
+
+if __name__ == '__main__':
+    main()
