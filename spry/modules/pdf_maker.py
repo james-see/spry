@@ -19,7 +19,7 @@ def create_pdf(username):
     #we FILL some of the fields of the template with the information we want
     #note we access the elements treating the template instance as a "dict"
     f["company_name"] = "user: "+username+" spry report v.1"
-    f["company_logo"] = "/Users/jclabpro/projects/spry/"+username+".jpg"
+    f["company_logo"] = "./"+username+".jpg"
 
     #and now we render the page
     f.render("./"+username+"-report.pdf")
