@@ -22,6 +22,10 @@ with open("README.rst", "rb") as f:
 setup(
     name = "spry",
     packages = ['spry','spry.modules'],
+    install_requires=[
+          'requests',
+          'clint',
+      ],
     entry_points = {
         "console_scripts": ['spry = spry.spry:main']
         },

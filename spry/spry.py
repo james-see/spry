@@ -20,11 +20,16 @@ __version__ = "0.3.8"
 # You should have received a copy of the GNU General Public License
 # along with Spry. If not, see <http://www.gnu.org/licenses/>.
 import sys
+from time import sleep
 import argparse, requests
+from random import random, randint
+from clint.textui import progress
 try:
     from modules import stuff
+    from modules import core
 except:
     from spry.modules import stuff
+    from spry.modules import core
 
 def main():
     parser = argparse.ArgumentParser(
@@ -36,28 +41,41 @@ def main():
 
     parser.add_argument('username', help='specific target domain, like domain.com')
 
-    parser.add_argument('-w', help='specific path to wordlist file',
-                        nargs=1, dest='wordlist', required=False)
+    parser.add_argument('-p', '--proxy', help='proxy in the form of 127.0.0.1:8118',
+                        nargs=1, dest='setproxy', required=False)
 
-    parser.add_argument('-r', '--resolve', help='resolve ip or domain name',
-                        action='store_true', required=False)
-
-    parser.add_argument('-z', '--zone', help='check for zone transfer',
-                        action='store_true', required=False)
+    parser.add_argument('-w', '--wait', help='max random wait time in seconds, 5 second default',
+                        dest='setwait', nargs='?',const=3,type=int,default=3)
 
     args = parser.parse_args()
     # args strings
     username = args.username
-    wlist = args.wordlist
-    if wlist: wlist = wlist[0]
+    setproxy = args.setproxy
+    setwait = args.setwait
+    i = 0
 
-    # args True or False
-    resolve = args.resolve
-    zone = args.zone
-    r=requests.get('https://www.instagram.com/'+username)
+    social_networks_list=['https://www.instagram.com/','https://foursquare.com/']
+    print('Starting to process list of social networks now...\n')
+    for soc in social_networks_list:
+        print("{} loading".format(soc))
+        sleep(randint(3,setwait))
+        r=requests.get(soc+username,stream=True)
+        try:
+            total_length = int(r.headers.get('content-length'))
+        except:
+            total_length = 1024
+        for chunk in progress.mill(r.iter_content(chunk_size=1024), expected_size=(total_length/1024) + 1):
+            sleep(random() * 0.2)
+            if chunk:
+                #sys.stdout.write(str(chunk))
+                sys.stdout.flush()
     #print(r.text)
-    print("Status code for instagram for that user is: {}".format(r.status_code))
-
+        if r.status_code == 200:
+            print("user found")
+            i = i+1
+        else:
+            print("Status code: {} no user found".format(r.status_code))
+    print('Total networks with username found: {}'.format(i))
 class Boo(stuff.Stuff):
     pass
 
