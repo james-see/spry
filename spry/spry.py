@@ -24,12 +24,16 @@ from time import sleep
 import argparse, requests
 from random import random, randint
 from clint.textui import progress
+from bs4 import BeautifulSoup, SoupStrainer
 try:
     from modules import stuff
     from modules import core
+    from modules.pdf_maker import *
 except:
     from spry.modules import stuff
     from spry.modules import core
+    from spry.modules.pdf_maker import *
+
 
 def main():
     parser = argparse.ArgumentParser(
@@ -44,22 +48,37 @@ def main():
     parser.add_argument('-p', '--proxy', help='proxy in the form of 127.0.0.1:8118',
                         nargs=1, dest='setproxy', required=False)
 
-    parser.add_argument('-w', '--wait', help='max random wait time in seconds, 5 second default',
+    parser.add_argument('-w', '--wait', help='max random wait time in seconds, 5 second default (randomly wait 1-5 seconds)',
                         dest='setwait', nargs='?',const=3,type=int,default=3)
+
+    parser.add_argument('--report', dest='reporting', action='store_true',help='save PDF report or not, default TRUE, saved as username.pdf')
+    parser.add_argument('--no-report', dest='reporting', action='store_false')
+    parser.set_defaults(reporting=True)
 
     args = parser.parse_args()
     # args strings
     username = args.username
     setproxy = args.setproxy
     setwait = args.setwait
+    reporting = args.reporting
     i = 0
 
-    social_networks_list=['https://www.instagram.com/','https://foursquare.com/']
-    print('Starting to process list of social networks now...\n')
+    social_networks_list=['https://www.instagram.com/','https://foursquare.com/','https://www.flickr.com/photos/']
+    totalnetworks = len(social_networks_list) # get the total networks to check
+    print('Starting to process list of {} social networks now...\n\n'.format(totalnetworks))
     for soc in social_networks_list:
         print("{} loading".format(soc))
-        sleep(randint(3,setwait))
+        sleep(randint(1,setwait))
+        sys.stdout.flush()
         r=requests.get(soc+username,stream=True)
+        if soc == 'https://www.instagram.com/':
+            #print(r.text)
+            soup = BeautifulSoup(r.content,'html.parser')
+            aa = soup.find("meta", {"property":"og:image"})
+            print (aa['content']) # this is the instagram profile image
+            instagram_profile_img = requests.get(aa['content'])
+            open('./'+username+'.jpg' , 'wb').write(instagram_profile_img.content)
+            #exit()
         try:
             total_length = int(r.headers.get('content-length'))
         except:
@@ -69,6 +88,7 @@ def main():
             if chunk:
                 #sys.stdout.write(str(chunk))
                 sys.stdout.flush()
+        sys.stdout.flush()
     #print(r.text)
         if r.status_code == 200:
             print("user found")
@@ -76,6 +96,8 @@ def main():
         else:
             print("Status code: {} no user found".format(r.status_code))
     print('Total networks with username found: {}'.format(i))
+    if reporting: # if pdf reporting is turned on (default on)
+        create_pdf(username)
 class Boo(stuff.Stuff):
     pass
 

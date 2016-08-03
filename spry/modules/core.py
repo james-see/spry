@@ -20,3 +20,5 @@
 # ----------------------------------------------------------------------
 try: import spinner
 except: from spry.modules import spinner
+try: import pdf_maker
+except: from spry.modules import pdf_maker

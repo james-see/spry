@@ -25,6 +25,9 @@ setup(
     install_requires=[
           'requests',
           'clint',
+          'fpdf',
+          'bs4',
+          'wget',
       ],
     entry_points = {
         "console_scripts": ['spry = spry.spry:main']
