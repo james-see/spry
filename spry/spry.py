@@ -15,8 +15,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Spry. If not, see <http://www.gnu.org/licenses/>.
-
-from modules import core
+from . import *
 import argparse, requests
 
 def main():
@@ -50,6 +49,7 @@ def main():
     r=requests.get('https://www.instagram.com/'+username)
     print(r.text)
     print("Status code for instagram for that user is: {}".format(r.status_code))
-    exit()
+
 if __name__ == '__main__':
     main()
+exit()
