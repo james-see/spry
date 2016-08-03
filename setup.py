@@ -1,6 +1,4 @@
 from setuptools import setup
-from codecs import open  # To use a consistent encoding
-from os import path
 
 def readme():
     with open('README.rst') as f:
@@ -29,10 +27,10 @@ setup(
           'Programming Language :: Python',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',],
-      packages=["sprypy", "sprypy.modules",],
-  install_requires = ['requests>=1.0',],
+        'Programming Language :: Python :: 3.5'],
+      packages=["sprypy"],
+  install_requires = ['requests>=1.0'],
     entry_points={
-        'console_scripts': [ 'spry=sprypy.spry:main',],
-        }
+        'console_scripts': [ 'spry=sprypy.spry:main']
+        },
 )
