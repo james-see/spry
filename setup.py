@@ -23,7 +23,7 @@ setup(
     name = "spry",
     packages = ["spry"],
     entry_points = {
-        "console_scripts": ['spry = spry:main']
+        "console_scripts": ['spry = spry.spry:main']
         },
     version = version,
     description = "social media scanner",
