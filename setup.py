@@ -21,9 +21,9 @@ with open("README.rst", "rb") as f:
 
 setup(
     name = "spry",
-    packages = find_packages(),
+    packages = ['spry','spry.modules'],
     entry_points = {
-        "console_scripts": ['spry = spry.spry:main']
+        "console_scripts": ['spry = spry:main']
         },
     version = version,
     description = "social media scanner",
