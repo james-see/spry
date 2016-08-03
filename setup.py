@@ -21,7 +21,7 @@ with open("README.rst", "rb") as f:
 
 setup(
     name = "spry",
-    packages = ["spry"],
+    packages = find_packages(),
     entry_points = {
         "console_scripts": ['spry = spry.spry:main']
         },
