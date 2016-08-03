@@ -5,12 +5,12 @@
 
 
 import re
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 version = re.search(
     '^__version__\s*=\s*"(.*)"',
-    open('sprypy/spry.py').read(),
+    open('spry/spry.py').read(),
     re.M
     ).group(1)
 
@@ -21,7 +21,7 @@ with open("README.rst", "rb") as f:
 
 setup(
     name = "spry",
-    packages = ["spry"],
+    packages = find_packages(),
     entry_points = {
         "console_scripts": ['spry = spry.spry:main']
         },
