@@ -51,6 +51,6 @@ def main():
     resolve = args.resolve
     zone = args.zone
     r=requests.get('https://www.instagram.com/'+username)
-    print(r.text)
+    #print(r.text)
     print("Status code for instagram for that user is: {}".format(r.status_code))
 

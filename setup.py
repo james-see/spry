@@ -6,7 +6,7 @@
 
 import re
 from setuptools import setup, find_packages
-
+#from distutils.core import setup
 
 version = re.search(
     '^__version__\s*=\s*"(.*)"',
@@ -21,9 +21,9 @@ with open("README.rst", "rb") as f:
 
 setup(
     name = "spry",
-    packages = find_packages(),
+    packages = ["spry"],
     entry_points = {
-        "console_scripts": ['spry = spry.spry:main']
+        "console_scripts": ['spry = spry:main']
         },
     version = version,
     description = "social media scanner",
@@ -37,6 +37,7 @@ keywords = ['social', 'collector', 'scraper'], # arbitrary keywords
           'Development Status :: 4 - Beta',
           'Environment :: Console',
           'Programming Language :: Python',
+        "Operating System :: OS Independent",
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5'],
