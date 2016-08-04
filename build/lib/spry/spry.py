@@ -70,10 +70,8 @@ def main():
     # args strings
     username = args.username
     setproxy = args.setproxy
-    if setproxy != '' and setproxy is not None:
+    if setproxy != '':
         proxyoverride = True
-    else:
-        proxyoverride = False
     setwait = args.setwait
     reporting = args.reporting
     useragent = args.useragent

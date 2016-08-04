@@ -7,6 +7,13 @@
 import re
 from setuptools import setup, find_packages
 #from distutils.core import setup
+import codecs
+try:
+    codecs.lookup('mbcs')
+except LookupError:
+    ascii = codecs.lookup('ascii')
+    func = lambda name, enc=ascii: {True: enc}.get(name=='mbcs')
+    codecs.register(func)
 
 version = re.search(
     '^__version__\s*=\s*"(.*)"',
