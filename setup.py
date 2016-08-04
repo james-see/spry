@@ -27,7 +27,7 @@ setup(
           'clint',
           'fpdf',
           'bs4',
-          'wget',
+          'termcolor',
       ],
     entry_points = {
         "console_scripts": ['spry = spry.spry:main']
