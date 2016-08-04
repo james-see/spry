@@ -1,8 +1,3 @@
-.. raw:: html
-
-    <style> .red {color:red} </style>
-.. role:: red
-
 .. image:: https://c2.staticflickr.com/4/3007/2292671780_22bbe6d994_z.jpg
 
 ``SPRY SPY PRY SPRY SPY PRY SPRY``
@@ -12,7 +7,7 @@
 .. image:: https://badges.gitter.im/Join%20Chat.svg
    :target:  https://gitter.im/sprypy/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
    
-:red:`social media intelligence from the terminal`
+social media intelligence from the terminal
 -----------------------------------------------
 
 WARNING:
