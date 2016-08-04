@@ -6,6 +6,8 @@
     :target: https://pypi.python.org/pypi/spry
 .. image:: https://badges.gitter.im/Join%20Chat.svg
    :target:  https://gitter.im/sprypy/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
+.. image:: http://spry.readthedocs.io/en/latest/?badge=latest
+   :target: https://spry.rtfd.io
    
 social media intelligence from the terminal
 -----------------------------------------------
