@@ -10,6 +10,10 @@
 social media intelligence from the terminal
 -----------------------------------------------
 
+WORKING SCREENSHOT (version 0.4.9)
+
+.. image:: https://cloud.githubusercontent.com/assets/616585/17407123/259d637c-5a34-11e6-96b1-0ef1b82a9559.png
+
 WARNING:
 ********
 this is in early beta
