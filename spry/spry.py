@@ -26,6 +26,7 @@ from random import random, randint
 import random
 from clint.textui import progress
 from bs4 import BeautifulSoup, SoupStrainer
+from urllib.parse import urlparse
 from termcolor import *
 try:
     from modules import stuff
@@ -60,7 +61,7 @@ def main():
     parser.add_argument('-u', '--user-agent', help='override random user-agent (by default randomly selects between +8500 different user agent strings',
                         dest='useragent', nargs='?',const='u',default='u')
     parser.add_argument('--no-report', dest='reporting', action='store_false')
-    parser.add_argument('-vu','--verbose-useragent',dest='vu',action='store_true')
+    parser.add_argument('-v','--verbose-useragent',dest='vu',action='store_true')
     parser.set_defaults(reporting=True,vu=False)
     args = parser.parse_args()
     # args strings
@@ -80,7 +81,12 @@ def main():
     totalnetworks = len(social_networks_list) # get the total networks to check
     print('Starting to process list of {} social networks now...\n\n'.format(totalnetworks))
     for soc in social_networks_list:
-        print("{} loading".format(soc))
+        # get domain name
+        domainname = urlparse(soc).netloc
+        domainnamelist = domainname.split('.')
+        for domainer in domainnamelist:
+            if len(domainer) > 3:
+                realdomain = domainer
         sleep(randint(1,setwait))
         sys.stdout.flush()
         # try to load the social network for the respective user name
@@ -89,15 +95,16 @@ def main():
             #print(r.text)
             soup = BeautifulSoup(r.content,'html.parser')
             aa = soup.find("meta", {"property":"og:image"})
-            print (aa['content']) # this is the instagram profile image
+            # test instagram profile image print
+            #print (aa['content']) # this is the instagram profile image
             instagram_profile_img = requests.get(aa['content'])
             open('./'+username+'.jpg' , 'wb').write(instagram_profile_img.content)
             #exit()
         try:
             total_length = int(r.headers.get('content-length'))
         except:
-            total_length = 10000
-        for chunk in progress.bar(r.iter_content(chunk_size=1024), expected_size=(total_length/1024) + 1):
+            total_length = 102399
+        for chunk in progress.dots(r.iter_content(chunk_size=1024),label='Loading '+realdomain):
             sleep(random.random() * 0.2)
             if chunk:
                 #sys.stdout.write(str(chunk))
@@ -105,10 +112,10 @@ def main():
         sys.stdout.flush()
     #print(r.text)
         if r.status_code == 200:
-            print("user found")
+            cprint("user found",'green')
             i = i+1
         else:
-            print("Status code: {} no user found".format(r.status_code))
+            cprint("Status code: {} no user found".format(r.status_code),'red')
     print('Total networks with username found: {}'.format(i))
     if reporting: # if pdf reporting is turned on (default on)
         create_pdf(username)
