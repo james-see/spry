@@ -9,6 +9,8 @@ social media intelligence from the terminal
 
 this is a very early beta release
 
-the only thing that works is instagram
+the only thing that works are instagram, facebook, twitter, reddit, foursquare, and flickr
+
+the goal is to get to +100 services that have public url user name profile links to check and gather information from
 
 run via spry [username]
