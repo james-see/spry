@@ -1,8 +1,6 @@
 .. image:: https://c2.staticflickr.com/4/3007/2292671780_22bbe6d994_z.jpg
 
-SPRY SPRY SPRY SPRY SPRY SPRY SPRY
-
-7 TIMES!
+SPRY SPY PRY SPRY SPY PRY SPRY
 
 .. image:: https://img.shields.io/pypi/v/spry.svg
     :target: https://pypi.python.org/pypi/spry
@@ -11,10 +9,42 @@ SPRY SPRY SPRY SPRY SPRY SPRY SPRY
    
 social media intelligence from the terminal
 
-this is a very early beta release
+this is in early beta
 
-the only thing that works are instagram, facebook, twitter, reddit, foursquare, and flickr
+16 social accounts working so far...
+
+KEY FEATURES:
+
+1. Saves profile images and content from each profile found in the directory that you ran the command from.
+2. Puts all found data into a single PDF (username-report.pdf) in the directory that you ran the command from.
+3. Progress DOTS and nice COLOURS assuming your terminal supports it.
+
+INSTALL via pip:
+
+`pip install spry`
+
+or
+
+INSTALL via git:
+
+`git clone git@github.com:jamesacampbell/spry.git`
+
+then `cd spry` then `python spry-run.py [username]`
+
+DEV PATH?
 
 the goal is to get to +100 services that have public url user name profile links to check and gather information from
 
-run via spry [username]
+EXAMPLES:
+
+run via `spry [username]`
+
+run without spitting out a pdf report:
+
+`spry [username] --no-report`
+
+run with verbose mode (show the user agent of each request):
+
+` spry [username] -v`
+
+
