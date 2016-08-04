@@ -18,7 +18,7 @@ WARNING:
 ********
 this is in early beta
 
-16 social accounts working so far...
+30 social accounts working so far...
 
 KEY FEATURES:
 =============
