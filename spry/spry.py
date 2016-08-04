@@ -4,7 +4,7 @@
 """bootstrap.bootstrap: provides entry point main()."""
 
 
-__version__ = "0.4.8"
+__version__ = "0.5.0"
 # spry social media scanner
 #
 # Spry is free software: you can redistribute it and/or modify
@@ -77,7 +77,7 @@ def main():
         cprint('\nUseragent set as %s\n' % (useragent,),'blue')
     headers = {'User-Agent': useragent}
     i = 0 # counter for how many are 200's
-    social_networks_list=['https://twitter.com/','https://www.instagram.com/','https://www.linkedin.com/in/','https://foursquare.com/','https://www.flickr.com/photos/','https://www.facebook.com/','https://www.reddit.com/user/','https://new.vk.com/','https://github.com/','https://ok.ru/','https://www.twitch.tv/','https://venmo.com/','http://www.goodreads.com/','http://www.last.fm/user/','https://www.pinterest.com/','https://keybase.io/','https://bitbucket.org/','https://pinboard.in/u:','https://disqus.com/by/','https://badoo.com/profile/','http://steamcommunity.com/id/','http://us.viadeo.com/en/profile/','https://www.periscope.tv/']
+    social_networks_list=['https://twitter.com/','https://www.instagram.com/','https://www.linkedin.com/in/','https://foursquare.com/','https://www.flickr.com/photos/','https://www.facebook.com/','https://www.reddit.com/user/','https://new.vk.com/','https://github.com/','https://ok.ru/','https://www.twitch.tv/','https://venmo.com/','http://www.goodreads.com/','http://www.last.fm/user/','https://api.spotify.com/v1/users/','https://www.pinterest.com/','https://keybase.io/','https://bitbucket.org/','https://pinboard.in/u:','https://disqus.com/by/','https://badoo.com/profile/','http://steamcommunity.com/id/','http://us.viadeo.com/en/profile/','https://www.periscope.tv/','https://www.researchgate.net/profile/','https://www.etsy.com/people/','https://myspace.com/','http://del.icio.us/','https://my.mail.ru/community/','https://www.xing.com/profile/']
     totalnetworks = len(social_networks_list) # get the total networks to check
     print('\n\n[*] Starting to process list of {} social networks now [*]\n\n'.format(totalnetworks))
     for soc in social_networks_list:
