@@ -4,7 +4,7 @@
 """bootstrap.bootstrap: provides entry point main()."""
 
 
-__version__ = "0.4.6"
+__version__ = "0.4.7"
 # spry social media scanner
 #
 # Spry is free software: you can redistribute it and/or modify
@@ -77,15 +77,19 @@ def main():
         cprint('\nUseragent set as %s\n' % (useragent,),'blue')
     headers = {'User-Agent': useragent}
     i = 0 # counter for how many are 200's
-    social_networks_list=['https://twitter.com/','https://www.instagram.com/','https://foursquare.com/','https://www.flickr.com/photos/','https://www.facebook.com/','https://www.reddit.com/user/']
+    social_networks_list=['https://twitter.com/','https://www.instagram.com/','https://foursquare.com/','https://www.flickr.com/photos/','https://www.facebook.com/','https://www.reddit.com/user/','https://new.vk.com/','https://github.com/','https://ok.ru/','https://www.twitch.tv/','https://venmo.com/','http://www.goodreads.com/','http://www.last.fm/user/','https://www.pinterest.com/','https://keybase.io/','https://bitbucket.org/']
     totalnetworks = len(social_networks_list) # get the total networks to check
-    print('Starting to process list of {} social networks now...\n\n'.format(totalnetworks))
+    print('\n\n[*] Starting to process list of {} social networks now [*]\n\n'.format(totalnetworks))
     for soc in social_networks_list:
         # get domain name
         domainname = urlparse(soc).netloc
         domainnamelist = domainname.split('.')
         for domainer in domainnamelist:
-            if len(domainer) > 3:
+            if len(domainer) > 3 and domainer != 'vk' and domainer != 'ok':
+                realdomain = domainer
+            elif domainer == 'vk':
+                realdomain = domainer
+            elif domainer == 'ok':
                 realdomain = domainer
         sleep(randint(1,setwait))
         sys.stdout.flush()
@@ -120,9 +124,10 @@ def main():
             i = i+1
         else:
             cprint("Status code: {} no user found".format(r.status_code),'red')
-    print('Total networks with username found: {}'.format(i))
+    print('\n\n[*] Total networks with username found: {} [*]\n'.format(i))
     if reporting: # if pdf reporting is turned on (default on)
         create_pdf(username)
+        cprint('Report saved as {}-report.pdf. \nTo turn off this feature use the --no-report flag.'.format(username),'yellow')
 class Boo(stuff.Stuff):
     pass
 
