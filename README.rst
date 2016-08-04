@@ -1,5 +1,3 @@
-.. image:: https://c2.staticflickr.com/4/3007/2292671780_22bbe6d994_z.jpg
-
 ``SPRY SPY PRY SPRY SPY PRY SPRY``
 
 .. image:: https://img.shields.io/pypi/v/spry.svg
