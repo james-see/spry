@@ -1,4 +1,8 @@
-SPRY
+.. image:: https://c2.staticflickr.com/4/3007/2292671780_22bbe6d994_z.jpg
+
+SPRY SPRY SPRY SPRY SPRY SPRY SPRY
+
+7 TIMES!
 
 .. image:: https://img.shields.io/pypi/v/spry.svg
     :target: https://pypi.python.org/pypi/spry
