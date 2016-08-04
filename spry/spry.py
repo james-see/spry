@@ -4,7 +4,7 @@
 """bootstrap.bootstrap: provides entry point main()."""
 
 
-__version__ = "0.4.4"
+__version__ = "0.4.5"
 # spry social media scanner
 #
 # Spry is free software: you can redistribute it and/or modify
@@ -91,7 +91,7 @@ def main():
         sys.stdout.flush()
         # try to load the social network for the respective user name
         r=requests.get(soc+username,stream=True, headers=headers)
-        if soc == 'https://www.instagram.com/':
+        if soc == 'https://www.instagram.com/' and r.status_code == 200:
             #print(r.text)
             soup = BeautifulSoup(r.content,'html.parser')
             aa = soup.find("meta", {"property":"og:image"})

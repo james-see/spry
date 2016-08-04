@@ -19,7 +19,8 @@ def create_pdf(username):
     #we FILL some of the fields of the template with the information we want
     #note we access the elements treating the template instance as a "dict"
     f["company_name"] = "user: "+username+" spry report v.1"
-    f["company_logo"] = "./"+username+".jpg"
+    try:f["company_logo"] = "./"+username+".jpg"
+    except: f["company_logo"] = "no instagram found"
 
     #and now we render the page
     f.render("./"+username+"-report.pdf")
