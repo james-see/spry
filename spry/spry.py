@@ -77,7 +77,7 @@ def main():
         cprint('\nUseragent set as %s\n' % (useragent,),'blue')
     headers = {'User-Agent': useragent}
     i = 0 # counter for how many are 200's
-    social_networks_list=['https://twitter.com/','https://www.instagram.com/','https://foursquare.com/','https://www.flickr.com/photos/','https://www.facebook.com/','https://www.reddit.com/user/','https://new.vk.com/','https://github.com/','https://ok.ru/','https://www.twitch.tv/','https://venmo.com/','http://www.goodreads.com/','http://www.last.fm/user/','https://www.pinterest.com/','https://keybase.io/','https://bitbucket.org/']
+    social_networks_list=['https://twitter.com/','https://www.instagram.com/','https://www.linkedin.com/in/','https://foursquare.com/','https://www.flickr.com/photos/','https://www.facebook.com/','https://www.reddit.com/user/','https://new.vk.com/','https://github.com/','https://ok.ru/','https://www.twitch.tv/','https://venmo.com/','http://www.goodreads.com/','http://www.last.fm/user/','https://www.pinterest.com/','https://keybase.io/','https://bitbucket.org/','https://pinboard.in/u:','https://disqus.com/by/','https://badoo.com/profile/','http://steamcommunity.com/id/','http://us.viadeo.com/en/profile/','https://www.periscope.tv/']
     totalnetworks = len(social_networks_list) # get the total networks to check
     print('\n\n[*] Starting to process list of {} social networks now [*]\n\n'.format(totalnetworks))
     for soc in social_networks_list:
