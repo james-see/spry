@@ -92,8 +92,7 @@ def main():
         # try to load the social network for the respective user name
         r=requests.get(soc+username,stream=True, headers=headers)
         # switch user agents again my friend
-        if useragent == 'u':
-            useragent = random.choice(useragents) # if user agent override not set, select random from list
+        useragent = random.choice(useragents) # if user agent override not set, select random from list
         if vu:
             cprint('\nUseragent set as %s\n' % (useragent,),'blue')
         if soc == 'https://www.instagram.com/' and r.status_code == 200:
