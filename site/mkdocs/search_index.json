@@ -1,0 +1,24 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "hello",
+            "title": "Home"
+        },
+        {
+            "location": "/#hello",
+            "text": "",
+            "title": "hello"
+        },
+        {
+            "location": "/about/",
+            "text": "hello again",
+            "title": "About"
+        },
+        {
+            "location": "/about/#hello-again",
+            "text": "",
+            "title": "hello again"
+        }
+    ]
+}
