@@ -1,5 +1,6 @@
 *.jpg
 *.pdf
+build/
 /build/
 *.pyc
 /dist/
