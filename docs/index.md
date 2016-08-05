@@ -6,7 +6,7 @@ social media intelligence from the command line
 
 WARNING:
 
-this is in early beta
+this is in early beta, the PDF only includes a single instagram profile image if found, otherwise errors at end
 
 KEY FEATURES:
 
@@ -23,7 +23,7 @@ KEY FEATURES:
 _run via tor and check for username pooman_   
 `spry pooman -p 127.0.0.1:9050`
 
-_run without spitting out a PDF report at the end_
+_run without spitting out a PDF report at the end_   
 `spry pooman --no-report`
 
 _run setting the random wait to be 1 to 10 seconds between calls_   
