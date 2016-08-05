@@ -1,8 +1,18 @@
 # -*- coding: utf-8 -*-
-
-
-"""setup.py: setuptools control."""
-
+# spry social media scanner
+#
+# Spry is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Spry is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Spry. If not, see <http://www.gnu.org/licenses/>.
 
 import re
 from setuptools import setup, find_packages
@@ -30,12 +40,14 @@ setup(
     name = "spry",
     packages = ['spry','spry.modules'],
     install_requires=[
-          'requests',
-          'clint',
-          'fpdf',
-          'bs4',
-          'termcolor',
+          'requests', # the best way to load URLS
+          'clint', # to do the cool dots while waiting
+          'fpdf', # to generate a PDF report!
+          'bs4', # to parse data from profile pages
+          'termcolor', # for fun colours!
+          'pysocks', # for tor proxy support
       ],
+      license = "GNU",
     entry_points = {
         "console_scripts": ['spry = spry.spry:main']
         },

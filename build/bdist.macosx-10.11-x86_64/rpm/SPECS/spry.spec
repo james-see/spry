@@ -1,7 +1,7 @@
 %define name spry
-%define version 0.5.0
-%define unmangled_version 0.5.0
-%define unmangled_version 0.5.0
+%define version 0.5.1
+%define unmangled_version 0.5.1
+%define unmangled_version 0.5.1
 %define release 1
 
 Summary: social media scanner

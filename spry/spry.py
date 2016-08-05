@@ -20,27 +20,47 @@ __version__ = "0.5.1"
 # You should have received a copy of the GNU General Public License
 # along with Spry. If not, see <http://www.gnu.org/licenses/>.
 import sys
+cur_version = sys.version_info
 from time import sleep
 import argparse, requests
 from random import random, randint
 import random
 from clint.textui import progress
 from bs4 import BeautifulSoup, SoupStrainer
-from urllib.parse import urlparse
-from termcolor import *
-try:
-    from modules import stuff
-    from modules import core
-    from modules.pdf_maker import *
-    from modules.useragents import *
+try: from urllib.parse import urlparse
 except:
-    from spry.modules import stuff
-    from spry.modules import core
-    from spry.modules.pdf_maker import *
-    from spry.modules.useragents import *
+    from urlparse import urlparse
+    cur_version = 2.7
+    #sys.path.append(PYTHONPATH)
+from termcolor import *
 
-welcomer = 'WELCOME TO SPRY\nenjoy your stay.\n(-h for help on commands)'
+if cur_version < 3:
+    try:
+        from .modules import stuff
+        from .modules import core
+        from .modules.pdf_maker import *
+        from .modules.useragents import *
+    except:
+        from modules import stuff
+        from modules import core
+        from modules.pdf_maker import *
+        from modules.useragents import *
+        #exit('your python version is too old, please install python 3+ to get SPRY to work')
+else:
+    try:
+        from modules import stuff
+        from modules import core
+        from modules.pdf_maker import *
+        from modules.useragents import *
+    except:
+        from spry.modules import stuff
+        from spry.modules import core
+        from spry.modules.pdf_maker import *
+        from spry.modules.useragents import *
 
+
+welcomer = '\n++++++++++++++++++++++++++++\n+++ SPRY +++ WELCOME +++++++\n+++ s0c1@l m3d1a sc@nn3r +++\n++++++++++++++++++++++++++++\n'
+usingtor = False
 def main():
     # welcome to the danger zone
 
@@ -48,10 +68,10 @@ def main():
         # random comment here for no reason ;)
         formatter_class=argparse.RawTextHelpFormatter,
         prog='spry',
-        description='social media scanner',
+        description='++++++++++++++++++++++++++++\n+++ SPRY +++++++++++++++++++\n+++ s0c1@l m3d1a sc@nn3r +++\n++++++++++++++++++++++++++++',
         epilog = '''EXAMPLE: \n check instagram \n spry jamesanthonycampbell \n ''')
 
-    parser.add_argument('username', help='specific target domain, like domain.com')
+    parser.add_argument('username', help='specific username, like realdonaldtrump')
 
     parser.add_argument('-p', '--proxy', help='proxy in the form of 127.0.0.1:8118',
                         nargs=1, dest='setproxy', required=False)
@@ -70,8 +90,13 @@ def main():
     # args strings
     username = args.username
     setproxy = args.setproxy
+    # note, the correct way to check if variable is NoneType
     if setproxy != '' and setproxy is not None:
         proxyoverride = True
+        if '9050' in setproxy[0] or '9150' in setproxy[0]:
+            usingtor = True
+        else:
+            usingtor = False
     else:
         proxyoverride = False
     setwait = args.setwait
@@ -102,15 +127,21 @@ def main():
 
         # get proxy settings if any
         if proxyoverride == True:
-            http_proxy  = "http://"+setproxy
-            https_proxy = "https://"+setproxy
-            proxyDict = {
-                          "http"  : http_proxy,
-                          "https" : https_proxy
-                        }
+            if usingtor:
+                socks_proxy = "socks5://"+setproxy[0]
+                proxyDict = { "http" : socks_proxy }
+            else:
+            #print(setproxy)
+                http_proxy  = "http://"+setproxy[0]
+                https_proxy = "https://"+setproxy[0]
+                proxyDict = {
+                              "http"  : http_proxy,
+                              "https" : https_proxy
+                            }
         sleep(randint(1,setwait))
         sys.stdout.flush()
         # try to load the social network for the respective user name
+        # make sure to load proxy if proxy set otherwise don't pass a proxy arg
         if proxyoverride == True:
             r=requests.get(soc+username,stream=True, headers=headers, proxies=proxyDict)
         else:
