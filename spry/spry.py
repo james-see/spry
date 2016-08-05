@@ -4,7 +4,7 @@
 """bootstrap.bootstrap: provides entry point main()."""
 
 
-__version__ = "0.5.1"
+__version__ = "0.5.2"
 # spry social media scanner
 #
 # Spry is free software: you can redistribute it and/or modify
@@ -25,9 +25,9 @@ from time import sleep
 import argparse, requests
 from random import random, randint
 import random
-from clint.textui import progress
-from bs4 import BeautifulSoup, SoupStrainer
-try: from urllib.parse import urlparse
+from clint.textui import progress # for the dots!
+from bs4 import BeautifulSoup, SoupStrainer # parse the html!
+try: from urllib.parse import urlparse # get domain names!
 except:
     from urlparse import urlparse
     cur_version = 2.7
@@ -118,13 +118,16 @@ def main():
         domainname = urlparse(soc).netloc
         domainnamelist = domainname.split('.')
         for domainer in domainnamelist:
-            if len(domainer) > 3 and domainer != 'vk' and domainer != 'ok':
+            if len(domainer) > 3 and domainer != 'vk' and domainer != 'ok' and domainer != 'last' and domainer != 'mail':
                 realdomain = domainer
             elif domainer == 'vk':
                 realdomain = domainer
             elif domainer == 'ok':
-                realdomain = domainer
-
+                realdomain = domainer+'.ru'
+            elif domainer == 'last':
+                realdomain = domainer+'.fm'
+            elif domainer == 'mail':
+                realdomain = domainer+'.ru'
         # get proxy settings if any
         if proxyoverride == True:
             if usingtor:
