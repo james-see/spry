@@ -4,7 +4,7 @@
 """bootstrap.bootstrap: provides entry point main()."""
 
 
-__version__ = "0.5.3"
+__version__ = "0.5.2"
 # spry social media scanner
 #
 # Spry is free software: you can redistribute it and/or modify
@@ -20,7 +20,7 @@ __version__ = "0.5.3"
 # You should have received a copy of the GNU General Public License
 # along with Spry. If not, see <http://www.gnu.org/licenses/>.
 import sys
-cur_version = sys.version_info.major
+cur_version = sys.version_info
 from time import sleep
 import argparse, requests
 from random import random, randint
@@ -34,7 +34,7 @@ except:
     #sys.path.append(PYTHONPATH)
 from termcolor import *
 
-if int(cur_version) < 3:
+if cur_version < 3:
     try:
         from .modules import stuff
         from .modules import core
