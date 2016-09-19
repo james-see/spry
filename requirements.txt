@@ -1,0 +1,6 @@
+requests # the best way to load URLS
+clint # to do the cool dots while waiting
+fpdf # to generate a PDF report!
+bs4 # to parse data from profile pages
+termcolor # for fun colours!
+pysocks # for tor proxy support
