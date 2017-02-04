@@ -93,7 +93,7 @@ def main():
     # note, the correct way to check if variable is NoneType
     if setproxy != '' and setproxy is not None:
         proxyoverride = True
-        if '9050' in setproxy[0] or '9150' in setproxy[0]:
+        if '9050' in setproxy[0] or '9150' or 'tor' in setproxy[0]:
             usingtor = True
         else:
             usingtor = False
@@ -176,7 +176,7 @@ def main():
         sys.stdout.flush()
     #print(r.text)
         if r.status_code == 200:
-            cprint("user found",'green')
+            cprint("user found @ {}".format(soc+username),'green')
             i = i+1
         else:
             cprint("Status code: {} no user found".format(r.status_code),'red')
