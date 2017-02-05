@@ -145,10 +145,25 @@ def main():
         sys.stdout.flush()
         # try to load the social network for the respective user name
         # make sure to load proxy if proxy set otherwise don't pass a proxy arg
+        # DONT FORGET TO HANDLE LOAD TIMEOUT ERRORS! - ADDED exception handlers finally 2-5-2017 JC
         if proxyoverride == True:
-            r=requests.get(soc+username,stream=True, headers=headers, proxies=proxyDict)
+            try:
+                r=requests.get(soc+username,stream=True, headers=headers, proxies=proxyDict)
+            except requests.Timeout as err:
+                print(err)
+                continue
+            except requests.RequestException as err:
+                print(err)
+                continue
         else:
-            r=requests.get(soc+username,stream=True, headers=headers)
+            try:
+                r=requests.get(soc+username,stream=True, headers=headers)
+            except requests.Timeout as err:
+                print(err)
+                continue
+            except requests.RequestException as err:
+                print(err)
+                continue
         # switch user agents again my friend
         if overrideuseragent == False:
             useragent = random.choice(useragents)
