@@ -46,6 +46,7 @@ setup(
           'bs4', # to parse data from profile pages
           'termcolor', # for fun colours!
           'pysocks', # for tor proxy support
+          'weasyprint',
       ],
       license = "GNU",
     entry_points = {

@@ -4,7 +4,7 @@
 """bootstrap.bootstrap: provides entry point main()."""
 
 
-__version__ = "0.5.3"
+__version__ = "0.5.5"
 # spry social media scanner
 #
 # Spry is free software: you can redistribute it and/or modify
@@ -80,11 +80,11 @@ def main():
                         dest='setwait', nargs='?',const=3,type=int,default=3)
     parser.add_argument('-u', '--user-agent', help='override random user-agent\n(by default randomly selects between \n+8500 different user agent strings',
                         dest='useragent', nargs='?',const='u',default='u')
-    parser.add_argument('--no-report', dest='reporting', action='store_false')
+    parser.add_argument('--report', dest='reporting', action='store_true')
     parser.add_argument('-v','--verbose-useragent',dest='vu',action='store_true')
     parser.add_argument('--version', action='version',
                     version='%(prog)s {version}'.format(version='Version: '+__version__))
-    parser.set_defaults(reporting=True,vu=False)
+    parser.set_defaults(reporting=False,vu=False)
     args = parser.parse_args()
     cprint(welcomer,'red')
     # args strings
@@ -197,8 +197,8 @@ def main():
             cprint("Status code: {} no user found".format(r.status_code),'red')
     print('\n\n[*] Total networks with username found: {} [*]\n'.format(i))
     if reporting: # if pdf reporting is turned on (default on)
-        create_pdf(username)
-        cprint('Report saved as {}-report.pdf. \nTo turn off this feature use the --no-report flag.\n'.format(username),'yellow')
+        create_pdf(username, i)
+        cprint('Report saved as {}-report.pdf. \nTo turn off this feature dont pass in the --report flag.\n'.format(username),'yellow')
 class Boo(stuff.Stuff):
     pass
 

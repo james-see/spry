@@ -4,7 +4,7 @@
 """bootstrap.bootstrap: provides entry point main()."""
 
 
-__version__ = "0.5.2"
+__version__ = "0.5.5"
 # spry social media scanner
 #
 # Spry is free software: you can redistribute it and/or modify
@@ -20,7 +20,7 @@ __version__ = "0.5.2"
 # You should have received a copy of the GNU General Public License
 # along with Spry. If not, see <http://www.gnu.org/licenses/>.
 import sys
-cur_version = sys.version_info
+cur_version = sys.version_info.major
 from time import sleep
 import argparse, requests
 from random import random, randint
@@ -34,7 +34,7 @@ except:
     #sys.path.append(PYTHONPATH)
 from termcolor import *
 
-if cur_version < 3:
+if int(cur_version) < 3:
     try:
         from .modules import stuff
         from .modules import core
@@ -80,11 +80,11 @@ def main():
                         dest='setwait', nargs='?',const=3,type=int,default=3)
     parser.add_argument('-u', '--user-agent', help='override random user-agent\n(by default randomly selects between \n+8500 different user agent strings',
                         dest='useragent', nargs='?',const='u',default='u')
-    parser.add_argument('--no-report', dest='reporting', action='store_false')
+    parser.add_argument('--report', dest='reporting', action='store_true')
     parser.add_argument('-v','--verbose-useragent',dest='vu',action='store_true')
     parser.add_argument('--version', action='version',
                     version='%(prog)s {version}'.format(version='Version: '+__version__))
-    parser.set_defaults(reporting=True,vu=False)
+    parser.set_defaults(reporting=False,vu=False)
     args = parser.parse_args()
     cprint(welcomer,'red')
     # args strings
@@ -93,7 +93,7 @@ def main():
     # note, the correct way to check if variable is NoneType
     if setproxy != '' and setproxy is not None:
         proxyoverride = True
-        if '9050' in setproxy[0] or '9150' in setproxy[0]:
+        if '9050' in setproxy[0] or '9150' or 'tor' in setproxy[0]:
             usingtor = True
         else:
             usingtor = False
@@ -145,10 +145,25 @@ def main():
         sys.stdout.flush()
         # try to load the social network for the respective user name
         # make sure to load proxy if proxy set otherwise don't pass a proxy arg
+        # DONT FORGET TO HANDLE LOAD TIMEOUT ERRORS! - ADDED exception handlers finally 2-5-2017 JC
         if proxyoverride == True:
-            r=requests.get(soc+username,stream=True, headers=headers, proxies=proxyDict)
+            try:
+                r=requests.get(soc+username,stream=True, headers=headers, proxies=proxyDict)
+            except requests.Timeout as err:
+                print(err)
+                continue
+            except requests.RequestException as err:
+                print(err)
+                continue
         else:
-            r=requests.get(soc+username,stream=True, headers=headers)
+            try:
+                r=requests.get(soc+username,stream=True, headers=headers)
+            except requests.Timeout as err:
+                print(err)
+                continue
+            except requests.RequestException as err:
+                print(err)
+                continue
         # switch user agents again my friend
         if overrideuseragent == False:
             useragent = random.choice(useragents)
@@ -176,14 +191,14 @@ def main():
         sys.stdout.flush()
     #print(r.text)
         if r.status_code == 200:
-            cprint("user found",'green')
+            cprint("user found @ {}".format(soc+username),'green')
             i = i+1
         else:
             cprint("Status code: {} no user found".format(r.status_code),'red')
     print('\n\n[*] Total networks with username found: {} [*]\n'.format(i))
     if reporting: # if pdf reporting is turned on (default on)
-        create_pdf(username)
-        cprint('Report saved as {}-report.pdf. \nTo turn off this feature use the --no-report flag.\n'.format(username),'yellow')
+        create_pdf(username, i)
+        cprint('Report saved as {}-report.pdf. \nTo turn off this feature dont pass in the --report flag.\n'.format(username),'yellow')
 class Boo(stuff.Stuff):
     pass
 
