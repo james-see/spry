@@ -53,9 +53,9 @@ EXAMPLES:
 
 run via ``spry [username]``
 
-run without spitting out a pdf report:
+run with spitting out a pdf report:
 
-``spry [username] --no-report``
+``spry [username] --report``
 
 run with verbose mode (show the user agent of each request):
 
