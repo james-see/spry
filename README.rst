@@ -46,7 +46,7 @@ or
 INSTALL via git:
 ================
 
-``git clone git@github.com:jamesacampbell/spry.git``
+``git clone git@github.com:james-see/spry.git``
 
 then ``cd spry`` then ``python spry-run.py [username]``
 
