@@ -26,7 +26,7 @@ except LookupError:
     codecs.register(func)
 
 version = re.search(
-    '^__version__\s*=\s*"(.*)"',
+    r'^__version__\s*=\s*"(.*)"',
     open('spry/spry.py').read(),
     re.M
     ).group(1)
