@@ -1,7 +1,7 @@
 """bootstrap.bootstrap: provides entry point main()."""
 
 
-__version__ = "0.5.6"
+__version__ = "0.5.7"
 # spry social media scanner
 #
 # Spry is free software: you can redistribute it and/or modify
