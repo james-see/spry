@@ -10,9 +10,16 @@
 social media intelligence from the terminal
 -----------------------------------------------
 
-Updates for 0.5.5:
+Version 0.5.5 - Major Update:
 
-Fixes for requests module updates that did not like white space in the beginning of user agent strings.
+- **Upgraded to Python 3.12+** (supports 3.12, 3.13, 3.14)
+- **Migrated to uv** - Fast Python package manager (10-100x faster than pip)
+- **Modernized codebase** - Removed Python 2 compatibility, modern Python 3 syntax
+- **Enhanced Instagram detection** - Improved profile image extraction and error handling
+- **Better PDF reports** - Now includes full list of found accounts with clickable links
+- **SSL error handling** - Gracefully handles sites with certificate issues
+- **Wayback Machine support** - Checks archived versions of dead sites (Myspace, Delicious, etc.)
+- **Updated URLs** - Twitter now uses x.com
 
 Requires Python 3.12 or higher.
 
@@ -24,38 +31,53 @@ WARNING:
 ********
 this is in early beta
 
-30 social accounts working so far...
+30+ social accounts checked, including archived sites via Wayback Machine
 
 KEY FEATURES:
 =============
 
-1. Saves profile images and content from each profile found in the directory that you ran the command from.
-2. Puts all found data into a single PDF (username-report.pdf) in the directory that you ran the command from.
-3. Progress DOTS and nice COLOURS assuming your terminal supports it.
-4. Randomized pausing between lookups so you don't get blocked.
-5. Randomized list of +8500 User Agent strings in use by default (can override via -u arg).
-6. Proxy override via -p arg.
+1. **Profile Image Extraction** - Automatically downloads Instagram profile pictures when found
+2. **Comprehensive PDF Reports** - Generates detailed PDF reports with all found accounts and clickable links
+3. **30+ Social Networks** - Checks major platforms plus archived sites via Wayback Machine
+4. **Smart Detection** - Properly handles non-existent profiles and error pages
+5. **Progress Indicators** - Visual progress dots and color-coded output
+6. **Rate Limiting** - Randomized pausing between lookups to avoid getting blocked
+7. **User Agent Rotation** - Uses +8500 different User Agent strings (can override via -u arg)
+8. **Proxy Support** - Tor and HTTP proxy support via -p arg
+9. **SSL Error Handling** - Automatically handles sites with certificate issues
+10. **Modern Python** - Built for Python 3.12+ with modern syntax and best practices
 
-INSTALL via uv (recommended):
-=============================
+INSTALLATION:
+=============
 
-``uv pip install spry``
+**Using uv (recommended - fastest):**
 
-or
+First install uv::
 
-INSTALL via pip:
-================
+    curl -LsSf https://astral.sh/uv/install.sh | sh
 
-``pip install spry``
+Then install spry::
 
-or
+    uv pip install spry
 
-INSTALL via git:
-================
+**Using pip:**
 
-``git clone git@github.com:james-see/spry.git``
+::
 
-then ``cd spry`` then ``uv sync`` then ``uv run python spry-run.py [username]``
+    pip install spry
+
+**From source:**
+
+::
+
+    git clone git@github.com:james-see/spry.git
+    cd spry
+    uv sync
+    uv run spry [username]
+
+or::
+
+    uv run python spry-run.py [username]
 
 DEV PATH?
 
@@ -64,14 +86,34 @@ the goal is to get to +100 services that have public url user name profile links
 EXAMPLES:
 =========
 
-run via ``spry [username]``
+Basic usage::
 
-run with spitting out a pdf report:
+    spry jamesacampbell
 
-``spry [username] --report``
+Generate PDF report with all found accounts::
 
-run with verbose mode (show the user agent of each request):
+    spry jamesacampbell --report
 
-``spry [username] -v``
+Verbose mode (show user agent for each request)::
+
+    spry jamesacampbell -v
+
+Use with Tor proxy::
+
+    spry jamesacampbell -p 127.0.0.1:9050
+
+Set custom wait time between requests (1-10 seconds)::
+
+    spry jamesacampbell -w 10
+
+Override user agent::
+
+    spry jamesacampbell -u "My Custom User Agent"
+
+REQUIREMENTS:
+=============
+
+- Python 3.12 or higher
+- uv (recommended) or pip for installation
 
 
