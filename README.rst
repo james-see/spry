@@ -14,7 +14,7 @@ Updates for 0.5.5:
 
 Fixes for requests module updates that did not like white space in the beginning of user agent strings.
 
-Confirmed working for Python 3.x.
+Requires Python 3.12 or higher.
 
 WORKING SCREENSHOT (version 0.5.5)
 
@@ -36,6 +36,13 @@ KEY FEATURES:
 5. Randomized list of +8500 User Agent strings in use by default (can override via -u arg).
 6. Proxy override via -p arg.
 
+INSTALL via uv (recommended):
+=============================
+
+``uv pip install spry``
+
+or
+
 INSTALL via pip:
 ================
 
@@ -48,7 +55,7 @@ INSTALL via git:
 
 ``git clone git@github.com:james-see/spry.git``
 
-then ``cd spry`` then ``python spry-run.py [username]``
+then ``cd spry`` then ``uv sync`` then ``uv run python spry-run.py [username]``
 
 DEV PATH?
 

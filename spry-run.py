@@ -1,6 +1,4 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
 
 """Convenience wrapper for running spry directly from source tree."""
 

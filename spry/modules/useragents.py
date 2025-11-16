@@ -1,5 +1,4 @@
 #!/usr/bin/python
-# -*- coding: utf-8 -*-
 # OBSKURA DOCUMENTATION 
 # DATE: April 4th 2015
 # AUTHOR: James C
@@ -3642,7 +3641,7 @@ useragents = [
 """Mozilla/5.0 (Windows; U; Windows NT 5.1; de; rv:2.2a1pre) Gecko/20110324 Firefox/4.2a1pre""",
 """Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0; Trident/4.0; SLCC1; .NET CLR 2.0.50727; Media Center PC 5.0; .NET CLR 3.5.30729; .NET CLR 3.0.30618)""",
 """Mozilla/5.0 (iPod; U; CPU iPhone OS 4_3_3 like Mac OS X; de-de) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8J2 Safari/6533.18.5""",
-"""Mozilla/4.0 (compatible; MSIE 5.0; Windows 98; DigExt\)""",
+"""Mozilla/4.0 (compatible; MSIE 5.0; Windows 98; DigExt\\)""",
 """Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Application CD Build 2.0.0; FunWebProducts)""",
 """Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.648; .NET CLR 3.5.21022; .NET4.0C; .NET4.0E)""",
 """Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; en) Opera 8.50""",
@@ -7832,7 +7831,7 @@ useragents = [
 """Mozilla/5.0 (Windows; U; Windows NT 5.2; de; rv:1.9.2.28) Gecko/20120306 Firefox/3.6.28""",
 """Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36 OPR/22.0.1471.70""",
 """Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0; Trident/5.0)""",
-"""Mozilla/5.0 (Windows NT 6.1; rv:21.0) Gecko/20100101 Firefox/21.0 USA\Miami Style""",
+"""Mozilla/5.0 (Windows NT 6.1; rv:21.0) Gecko/20100101 Firefox/21.0 USA\\Miami Style""",
 """Mozilla/5.0 (Windows NT 5.1; rv:11.0) Gecko Firefox/11.0""",
 """Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.110 Safari/AA836C""",
 """Mozilla/5.0 (Linux; U; Android 4.0.4; tr-tr; ST17i Build/4.1.B.0.587) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30""",

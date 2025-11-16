@@ -1,6 +1,4 @@
-
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 
 # ----------------------------------------------------------------------
 # This file is part of spry
@@ -18,7 +16,5 @@
 # You should have received a copy of the GNU General Public License
 # along with Spry. If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
-try: import spinner
-except: from spry.modules import spinner
-try: import pdf_maker
-except: from spry.modules import pdf_maker
+from spry.modules import spinner
+from spry.modules import pdf_maker

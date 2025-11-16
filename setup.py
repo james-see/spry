@@ -40,14 +40,15 @@ setup(
     name = "spry",
     packages = ['spry','spry.modules'],
     install_requires=[
-          'requests', # the best way to load URLS
-          'clint', # to do the cool dots while waiting
-          'fpdf', # to generate a PDF report!
-          'bs4', # to parse data from profile pages
-          'termcolor', # for fun colours!
-          'pysocks', # for tor proxy support
+          'requests',  # the best way to load URLS
+          'clint',  # to do the cool dots while waiting
+          'fpdf',  # to generate a PDF report!
+          'beautifulsoup4',  # to parse data from profile pages
+          'termcolor',  # for fun colours!
+          'pysocks',  # for tor proxy support
           'weasyprint',
       ],
+    python_requires='>=3.12',
       license = "GNU",
     entry_points = {
         "console_scripts": ['spry = spry.spry:main']
@@ -66,6 +67,7 @@ keywords = ['social', 'collector', 'scraper'], # arbitrary keywords
           'Programming Language :: Python',
         "Operating System :: OS Independent",
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5'],
+        'Programming Language :: Python :: 3.12',
+        'Programming Language :: Python :: 3.13',
+        'Programming Language :: Python :: 3.14'],
     )
