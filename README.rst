@@ -10,7 +10,7 @@
 social media intelligence from the terminal
 -----------------------------------------------
 
-Version 0.5.5 - Major Update:
+Version 0.5.6 - Major Update:
 
 - **Upgraded to Python 3.12+** (supports 3.12, 3.13, 3.14)
 - **Migrated to uv** - Fast Python package manager (10-100x faster than pip)
@@ -23,7 +23,7 @@ Version 0.5.5 - Major Update:
 
 Requires Python 3.12 or higher.
 
-WORKING SCREENSHOT (version 0.5.5)
+WORKING SCREENSHOT (version 0.5.6)
 
 .. image:: https://cloud.githubusercontent.com/assets/616585/17407123/259d637c-5a34-11e6-96b1-0ef1b82a9559.png
 
