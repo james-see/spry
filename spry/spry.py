@@ -1,6 +1,6 @@
 """bootstrap.bootstrap: provides entry point main()."""
 
-__version__ = "0.5.8"
+__version__ = "0.5.9"
 # spry social media scanner
 #
 # Spry is free software: you can redistribute it and/or modify
@@ -29,7 +29,6 @@ from clint.textui import progress  # for the dots!
 from termcolor import cprint
 
 from spry.modules import stuff
-from spry.modules.pdf_maker import create_pdf
 from spry.modules.useragents import useragents
 
 # Suppress SSL warnings for sites with certificate issues
@@ -81,7 +80,12 @@ def main():
         const="u",
         default="u",
     )
-    parser.add_argument("--report", dest="reporting", action="store_true")
+    parser.add_argument(
+        "--report",
+        dest="reporting",
+        action="store_true",
+        help="generate a PDF report with the found username matches and save it as <username>-report.pdf",
+    )
     parser.add_argument("-v", "--verbose-useragent", dest="vu", action="store_true")
     parser.add_argument("--version", action="version", version=f"%(prog)s Version: {__version__}")
     parser.set_defaults(reporting=False, vu=False)
@@ -340,10 +344,12 @@ def main():
             else:
                 cprint(f"Status code: {r.status_code} no user found", "red")
     print(f"\n\n[*] Total networks with username found: {i} [*]\n")
-    if reporting:  # if pdf reporting is turned on (default on)
+    if reporting:  # if pdf reporting is turned on (default off)
+        from spry.modules.pdf_maker import create_pdf
+
         create_pdf(username, i, found_accounts)
         cprint(
-            f"Report saved as {username}-report.pdf. \nTo turn off this feature dont pass in the --report flag.\n",
+            f"Report saved as {username}-report.pdf. Pass --report only when you want this PDF output.\n",
             "yellow",
         )
 
