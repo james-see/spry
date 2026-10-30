@@ -1,6 +1,6 @@
 """bootstrap.bootstrap: provides entry point main()."""
 
-__version__ = "0.5.10"
+__version__ = "0.5.11"
 # spry social media scanner
 #
 # Spry is free software: you can redistribute it and/or modify
@@ -200,6 +200,7 @@ def main():
         request_timeout = 30  # 30 second timeout
         is_instagram = soc == "https://www.instagram.com/"
         is_twitch = soc == "https://www.twitch.tv/"
+        is_twitter = soc == "https://x.com/" or "twitter.com" in soc
 
         # Handle Wayback Machine URLs specially
         is_wayback = "web.archive.org" in soc
@@ -346,15 +347,38 @@ def main():
                 ]
             )
 
+        is_twitter_unavailable = False
+        if is_twitter and r.status_code == 200:
+            try:
+                twitter_page = r.text.lower()
+            except (requests.RequestException, UnicodeDecodeError):
+                twitter_page = ""
+            is_twitter_unavailable = any(
+                marker in twitter_page
+                for marker in [
+                    "this account doesn't exist",
+                    "account suspended",
+                    "something went wrong",
+                    "try searching",
+                ]
+            )
+
         # print(r.text)
         # For Instagram and Twitch, 200 responses can be error pages, so check content
-        if r.status_code == 200 and not is_instagram_error and not is_twitch_unavailable:
+        if (
+            r.status_code == 200
+            and not is_instagram_error
+            and not is_twitch_unavailable
+            and not is_twitter_unavailable
+        ):
             account_url = soc + username
             cprint(f"user found @ {account_url}", "green")
             found_accounts.append(account_url)
             i = i + 1
         else:
-            if is_twitch_unavailable:
+            if is_twitter_unavailable:
+                cprint(f"Status code: {r.status_code} no user found (X/Twitter error page)", "red")
+            elif is_twitch_unavailable:
                 cprint(f"Status code: {r.status_code} no user found (Twitch error page)", "red")
             elif is_instagram_error:
                 cprint(f"Status code: {r.status_code} no user found (Instagram error page)", "red")

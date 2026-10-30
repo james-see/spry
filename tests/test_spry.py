@@ -7,7 +7,7 @@ import sys
 def test_version() -> None:
     import spry.spry as module
 
-    assert module.__version__ == "0.5.10"
+    assert module.__version__ == "0.5.11"
 
 
 def test_help_mentions_report() -> None:
