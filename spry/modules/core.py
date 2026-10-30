@@ -16,5 +16,3 @@
 # You should have received a copy of the GNU General Public License
 # along with Spry. If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
-from spry.modules import spinner
-from spry.modules import pdf_maker
